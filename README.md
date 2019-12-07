@@ -1,4 +1,4 @@
-#PHPMetarTafParser
+# PHPMetarTafParser
 
 PHPMetarTafParser is a library written in PHP(7.2) to parse METAR and TAF messages.
 
