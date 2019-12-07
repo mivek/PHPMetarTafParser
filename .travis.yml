@@ -1,0 +1,19 @@
+language: php
+php:
+  - 7.1
+  - 7.2
+  - 7.3
+
+dist: trusty
+
+addons:
+  sonarcloud:
+    organization: "mivek-github"
+    token:
+      secure: $SONAR_TOKEN # encrypted value of your token
+
+install: composer install
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - sonar-scanner
