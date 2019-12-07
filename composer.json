@@ -1,0 +1,43 @@
+{
+    "name": "mivek/PHP-metar-taf-parser",
+    "description": "A php library to decode metar and taf messages",
+    "type": "library",
+    "keywords": [
+        "metar",
+        "taf",
+        "parser"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jean-Kevin Kpadey",
+            "email": "jeankevin.kpadey@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/mivek/PHPMetarTafParser/issues",
+        "source": "https://github.com/mivek/PHPMetarTafParser"
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPMetarTafParser\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PHPMetarTafParser\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php" : "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "8.3",
+        "hamcrest/hamcrest-php": "^2.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.0-dev"
+        }
+    }
+}
