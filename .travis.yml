@@ -6,14 +6,20 @@ php:
 
 dist: trusty
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 addons:
   sonarcloud:
     organization: "mivek-github"
     token:
       secure: $SONAR_TOKEN # encrypted value of your token
 
-install: composer install
+install: composer update --no-interaction
 
+before_script: phpunit --dump-xdebug-filter build/xdebug-filter.php
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - phpunit -c phpunit.xml --prepend build/xdebug-filter.php --coverage-clover=build/coverage.xml --log-junit=build/tests-result.xml
   - sonar-scanner

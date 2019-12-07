@@ -1,10 +1,10 @@
-PHPMetarTafParser
+#PHPMetarTafParser
 
-PHPMetarTafParser is a library written in PHP to parse METAR and TAF messages.
+PHPMetarTafParser is a library written in PHP(7.2) to parse METAR and TAF messages.
 
 The MetarParser and the TAFParser contain a method parse returning a metar object or a TAF object.
 
-#Model
+## Model
 
 ### AbstractWeatherContainer
 Abstract class containing the basic elements
@@ -139,9 +139,9 @@ Subclass of the TafTrend composed of
 
 - probability (int) probability of the trend
 
-# Examples:
+## Examples:
 
-## Parsing a METAR 
+### Parsing a METAR 
 ```php
 $code = "LFBG 081130Z AUTO 23012KT 9999 SCT022 BKN072 BKN090 22/16 Q1011 TEMPO 26015G25KT 3000 TSRA SCT025CB BKN050";
 $metarParser = new \PHPMetarTafParser\Parser\MetarParser();
@@ -279,7 +279,7 @@ PHPMetarTafParser\Model\Metar Object
 )
 ```
 
-## Parsing a TAF
+### Parsing a TAF
 ```php
 $code = "TAF LSZH 292025Z 2921/3103 VRB03KT 9999 FEW020 BKN080 TX20/3014Z TN06/3003Z " .
         "PROB30 TEMPO 2921/2923 SHRA " .
