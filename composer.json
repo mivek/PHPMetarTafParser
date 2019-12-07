@@ -1,5 +1,5 @@
 {
-    "name": "mivek/PHP-metar-taf-parser",
+    "name": "mivek/php-metar-taf-parser",
     "description": "A php library to decode metar and taf messages",
     "type": "library",
     "keywords": [
@@ -29,7 +29,7 @@
         }
     },
     "require": {
-        "php" : "^7.1"
+        "php" : "^7.2"
     },
     "require-dev": {
         "phpunit/phpunit": "8.3",
