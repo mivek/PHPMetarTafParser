@@ -94,12 +94,4 @@ abstract class AbstractWeatherCode extends AbstractWeatherContainer
         $this->message = $message;
         return $this;
     }
-
-    /**
-     * AbstractWeatherCode constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
 }

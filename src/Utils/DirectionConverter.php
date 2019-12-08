@@ -27,25 +27,9 @@ class DirectionConverter
         }
         $fDegrees = floatval($degrees);
         if (self::isBetween(self::NORTH_NORTH_EAST, self::SOUTH_SOUTH_WEST, $fDegrees)) {
-            if (self::isBetween(self::NORTH_NORTH_EAST, self::EAST_NORTH_EAST, $fDegrees)) {
-                $result = 'NE';
-            } elseif (self::isBetween(self::EAST_NORTH_EAST, self::EAST_SOUTH_EAST, $fDegrees)) {
-                $result = 'E';
-            } elseif (self::isBetween(self::EAST_SOUTH_EAST, self::SOUTH_SOUTH_EAST, $fDegrees)) {
-                $result = 'SE';
-            } else {
-                $result = 'S';
-            }
+            $result = self::parseDirectionNorthEastToSouthWest($fDegrees);
         } else {
-            if(self::isBetween(self::SOUTH_SOUTH_WEST, self::WEST_SOUTH_WEST, $fDegrees)) {
-                $result = 'SW';
-            } elseif (self::isBetween(self::WEST_SOUTH_WEST, self::WEST_NORTH_WEST, $fDegrees)) {
-                $result = 'W';
-            } elseif (self::isBetween(self::WEST_NORTH_WEST, self::NORTH_NORTH_WEST, $fDegrees)) {
-                $result = 'NW';
-            } else {
-                $result = 'N';
-            }
+            $result = self::parseDirectionSouthWestToNorth($fDegrees);
         }
         return $result;
     }
@@ -68,5 +52,41 @@ class DirectionConverter
      */
     private function __construct()
     {
+    }
+
+    /**
+     * @param float $fDegrees
+     * @return string
+     */
+    private static function parseDirectionNorthEastToSouthWest(float $fDegrees): string
+    {
+        if (self::isBetween(self::NORTH_NORTH_EAST, self::EAST_NORTH_EAST, $fDegrees)) {
+            $result = 'NE';
+        } elseif (self::isBetween(self::EAST_NORTH_EAST, self::EAST_SOUTH_EAST, $fDegrees)) {
+            $result = 'E';
+        } elseif (self::isBetween(self::EAST_SOUTH_EAST, self::SOUTH_SOUTH_EAST, $fDegrees)) {
+            $result = 'SE';
+        } else {
+            $result = 'S';
+        }
+        return $result;
+    }
+
+    /**
+     * @param float $fDegrees
+     * @return string
+     */
+    private static function parseDirectionSouthWestToNorth(float $fDegrees): string
+    {
+        if (self::isBetween(self::SOUTH_SOUTH_WEST, self::WEST_SOUTH_WEST, $fDegrees)) {
+            $result = 'SW';
+        } elseif (self::isBetween(self::WEST_SOUTH_WEST, self::WEST_NORTH_WEST, $fDegrees)) {
+            $result = 'W';
+        } elseif (self::isBetween(self::WEST_NORTH_WEST, self::NORTH_NORTH_WEST, $fDegrees)) {
+            $result = 'NW';
+        } else {
+            $result = 'N';
+        }
+        return $result;
     }
 }

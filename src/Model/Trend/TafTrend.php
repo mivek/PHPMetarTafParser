@@ -16,11 +16,6 @@ class TafTrend extends AbstractTrend
      */
     private $validity;
 
-    public function __construct(string $type)
-    {
-        parent::__construct($type);
-    }
-
     /**
      * @param Validity $validity
      * @return TafTrend

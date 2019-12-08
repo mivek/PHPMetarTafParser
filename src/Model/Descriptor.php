@@ -8,7 +8,7 @@ namespace PHPMetarTafParser\Model;
 
 final class Descriptor
 {
-    const values = [
+    const VALUES = [
         'SH',
         'MI',
         'BC',
