@@ -1,4 +1,9 @@
 # PHPMetarTafParser
+[![Build Status](https://travis-ci.org/mivek/PHPMetarTafParser.svg?branch=master)](https://travis-ci.org/mivek/PHPMetarTafParser)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=mivek_PHPMetarTafParser&metric=coverage)](https://sonarcloud.io/dashboard?id=mivek_PHPMetarTafParser)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=mivek_PHPMetarTafParser&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=mivek_PHPMetarTafParser)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mivek_PHPMetarTafParser&metric=alert_status)](https://sonarcloud.io/dashboard?id=mivek_PHPMetarTafParser)
+
 
 PHPMetarTafParser is a library written in PHP(7.2) to parse METAR and TAF messages.
 
