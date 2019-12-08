@@ -99,14 +99,15 @@ abstract class AbstractParser
     public function commonParse(AbstractWeatherContainer $container, string $code) : bool
     {
         $isParsed=true;
+        $command = $this->commandSupplier->get($code);
         if (self::CAVOK == $code) {
             $container->setCavok(true);
             if($container->getVisibility() == null) {
                 $container->setVisibility(new Visibility());
             }
             $container->getVisibility()->setMainVisibility(9999,'m');
-        } elseif($command = $this->commandSupplier->get($code)) {
-                $command->execute($container, $code);
+        } elseif($command) {
+            $command->execute($container, $code);
         } else {
             $wc = $this->parseWeatherCondition($code);
             if($wc == null) {

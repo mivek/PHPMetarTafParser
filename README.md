@@ -8,6 +8,13 @@
 PHPMetarTafParser is a library written in PHP(7.2) to parse METAR and TAF messages.
 
 The MetarParser and the TAFParser contain a method parse returning a metar object or a TAF object.
+## Add dependency
+
+Using composer:
+
+```
+composer require mivek/php-metar-taf-parser
+```
 
 ## Model
 
