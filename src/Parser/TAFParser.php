@@ -59,19 +59,7 @@ class TAFParser extends AbstractParser
         $idx++;
         $taf->setValidity($this->parseValidity($line1[$idx]));
 
-        $line1size = count($line1);
-        for ($j=$idx; $j < $line1size; $j++) {
-            $token = $line1[$j];
-            if(self::RMK == $token) {
-                $taf->setRemark($this->parseRemark($line1,$j));
-            } elseif(substr_compare($token,self::TX,0,2)==0) {
-                $taf->setMaxTemperature($this->parseTemperatureDated($token));
-            } elseif (substr_compare($token, self::TN, 0,2)==0) {
-                $taf->setMinTemperature($this->parseTemperatureDated($token));
-            } else {
-                $this->commonParse($taf, $token);
-            }
-        }
+        $this->parseFirstLine($line1, $idx, $taf);
 
         // Other lines
         $linesSize = count($lines);
@@ -215,5 +203,27 @@ class TAFParser extends AbstractParser
     public function __construct()
     {
         parent::__construct(new CommandSupplier());
+    }
+
+    /**
+     * @param array $line1
+     * @param int $idx
+     * @param TAF $taf
+     */
+    private function parseFirstLine(array $line1, int $idx, TAF $taf): void
+    {
+        $line1size = count($line1);
+        for ($j = $idx; $j < $line1size; $j++) {
+            $token = $line1[$j];
+            if (self::RMK == $token) {
+                $taf->setRemark($this->parseRemark($line1, $j));
+            } elseif (substr_compare($token, self::TX, 0, 2) == 0) {
+                $taf->setMaxTemperature($this->parseTemperatureDated($token));
+            } elseif (substr_compare($token, self::TN, 0, 2) == 0) {
+                $taf->setMinTemperature($this->parseTemperatureDated($token));
+            } else {
+                $this->commonParse($taf, $token);
+            }
+        }
     }
 }

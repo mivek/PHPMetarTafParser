@@ -50,7 +50,7 @@ abstract class AbstractParser
             $wc->setIntensity($matches[1]);
         }
 
-        foreach (Descriptor::values as $descriptor) {
+        foreach (Descriptor::VALUES as $descriptor) {
             if(!empty(preg_grep('#('.$descriptor.')#', explode('\n', $weatherPart)))) {
                 $wc->setDescriptor($descriptor);
             }
@@ -98,27 +98,26 @@ abstract class AbstractParser
      */
     public function commonParse(AbstractWeatherContainer $container, string $code) : bool
     {
+        $isParsed=true;
+        $command = $this->commandSupplier->get($code);
         if (self::CAVOK == $code) {
             $container->setCavok(true);
             if($container->getVisibility() == null) {
                 $container->setVisibility(new Visibility());
             }
             $container->getVisibility()->setMainVisibility(9999,'m');
-            return true;
-        }
-
-        $command = $this->commandSupplier->get($code);
-        if ($command != null) {
+        } elseif($command) {
             $command->execute($container, $code);
-            return true;
+        } else {
+            $wc = $this->parseWeatherCondition($code);
+            if($wc == null) {
+                $isParsed = false;
+            } else {
+                $container->addWeatherCondition($wc);
+            }
         }
+        return $isParsed;
 
-        $wc = $this->parseWeatherCondition($code);
-        if($wc == null) {
-            return false;
-        }
-        $container->addWeatherCondition($wc);
-        return true;
     }
     /**
      * Parses a code a returns a TAF or a METAR
